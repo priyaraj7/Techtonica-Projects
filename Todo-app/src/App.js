@@ -27,6 +27,15 @@ const App = () => {
 
   const sortByTime = () => {
     setSortBy(sortBy === "asc" ? "dsc" : "asc");
+    const sortedTodos = [...todos];
+    sortedTodos.sort((a, b) => {
+      if (sortBy === "asc") {
+        return a.createdAt - b.createdAt;
+      } else {
+        return b.createdAt - a.createdAt;
+      }
+    });
+    setTodos(sortedTodos);
   };
 
   // addTodo
@@ -56,23 +65,15 @@ const App = () => {
     <div className="app">
       <h2 className="header">My todos:</h2>
       <div className="todo-list">
-        {todos
-          .sort((a, b) => {
-            if (sortBy === "asc") {
-              return a.createdAt - b.createdAt;
-            } else {
-              return b.createdAt - a.createdAt;
-            }
-          })
-          .map((todo, index) => (
-            <Todo
-              key={index}
-              index={index}
-              todo={todo}
-              toggleTodo={toggleTodo}
-              deleteTodo={deleteTodo}
-            />
-          ))}
+        {todos.map((todo, index) => (
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
+          />
+        ))}
 
         <div className="add-todo">
           <TodoForm addTodo={addTodo} />

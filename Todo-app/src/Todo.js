@@ -1,5 +1,3 @@
-// import React from "react";
-
 const Todo = ({ todo, toggleTodo, index, deleteTodo, sortByTime }) => {
   return (
     <div className="todo-container">
@@ -20,6 +18,3 @@ const Todo = ({ todo, toggleTodo, index, deleteTodo, sortByTime }) => {
 };
 
 export default Todo;
-
-// <div>{todo.createdAt.toString()}</div>
-//
